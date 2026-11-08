@@ -61,6 +61,26 @@ Other local changes preserve failed shader requests for offline reproduction and
 
 There is no verified long gameplay benchmark, confirmed complete VRAM-leak repair, or controlled proof that the enemy-death crash has been eliminated. No stable-release claim is made.
 
+## Follow-up VRAM measurements
+
+A later local gameplay log still showed substantial VRAM use. At frame 15,000, the renderer reported:
+
+| Tracked category | MiB |
+| --- | ---: |
+| Allocator blocks reserved | 11,362 |
+| Actual allocations within those blocks | 8,394 |
+| Live textures with their own allocation | 4,385 |
+| Released textures with their own allocation | 2,669 |
+| Buffer mirrors | 840 |
+
+The texture and mirror rows are components of actual allocations; they must not be added to that total again. The roughly 2,968 MiB gap between reserved blocks and allocations may include fragmentation and headroom. It is not all proven reclaimable. These renderer counters do not account for the user's entire approximately 14 GB observation or distinguish all driver and other-process usage.
+
+The retention counter reported only 18.1 MiB retired cumulatively. The 512 MiB target does not force eviction of protected GPU-written contents. Further work should first measure those protected categories, then investigate safe preservation and eviction of GPU contents and allocator fragmentation. Simply reducing the target is not a demonstrated solution. No further memory optimization or lower-VRAM gameplay result has been validated.
+
+## Download availability
+
+There is currently **no downloadable fork or executable in this repository**. The local graphical launcher and experimental renderer have not been cleared for redistribution under the upstream additions terms. This report can help other users and maintainers investigate the same symptoms, but it cannot install the local changes. Use [official upstream releases](https://github.com/tangerineturtle1/NX2navi/releases) for publicly available builds.
+
 ## Upstream contribution and distribution status
 
 Upstream submission: [issue #115](https://github.com/tangerineturtle1/NX2navi/issues/115), filed by @MitsuSarkar. No pull request has been merged, and no redistribution permission has been granted.
