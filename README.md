@@ -63,6 +63,8 @@ There is no verified long gameplay benchmark, confirmed complete VRAM-leak repai
 
 ## Upstream contribution and distribution status
 
+Upstream submission: [issue #115](https://github.com/tangerineturtle1/NX2navi/issues/115), filed by @MitsuSarkar. No pull request has been merged, and no redistribution permission has been granted.
+
 I would like the upstream maintainer to review these findings and consider the narrow BSSY scan fix and missing-directory fix. The memory policy and driver compatibility change need broader review and gameplay testing.
 
 The upstream [LICENSE-ADDITIONS](https://github.com/tangerineturtle1/NX2navi/blob/main/LICENSE-ADDITIONS) reserves rights to its additions and requires written permission for redistribution. That permission has not been obtained. This repository therefore publishes only this independently written report; it does not distribute the local fork, a source patch, or any game-derived executable/data.
