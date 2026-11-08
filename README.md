@@ -77,6 +77,12 @@ The texture and mirror rows are components of actual allocations; they must not 
 
 The retention counter reported only 18.1 MiB retired cumulatively. The 512 MiB target does not force eviction of protected GPU-written contents. Further work should first measure those protected categories, then investigate safe preservation and eviction of GPU contents and allocator fragmentation. Simply reducing the target is not a demonstrated solution. No further memory optimization or lower-VRAM gameplay result has been validated.
 
+## Launcher shortcut
+
+Published by **MitsuSarkar**: [Play-RX6800XT-Fork.cmd](Play-RX6800XT-Fork.cmd). People who already have the compatible local launcher installation can use this file to open it. Download the CMD, place it beside that installation's `NX2navi.exe`, and double-click it. Keep the installation's runtime and other required files in place.
+
+This shortcut only opens the adjacent EXE. It does not download or install the fork, apply GPU optimizations, include game files, or make a standard upstream installation into the experimental RX 6800 XT build.
+
 ## Download availability
 
 There is currently **no downloadable fork or executable in this repository**. The local graphical launcher and experimental renderer have not been cleared for redistribution under the upstream additions terms. This report can help other users and maintainers investigate the same symptoms, but it cannot install the local changes. Use [official upstream releases](https://github.com/tangerineturtle1/NX2navi/releases) for publicly available builds.
@@ -87,6 +93,6 @@ Upstream submission: [issue #115](https://github.com/tangerineturtle1/NX2navi/is
 
 I would like the upstream maintainer to review these findings and consider the narrow BSSY scan fix and missing-directory fix. The memory policy and driver compatibility change need broader review and gameplay testing.
 
-The upstream [LICENSE-ADDITIONS](https://github.com/tangerineturtle1/NX2navi/blob/main/LICENSE-ADDITIONS) reserves rights to its additions and requires written permission for redistribution. That permission has not been obtained. This repository therefore publishes only this independently written report; it does not distribute the local fork, a source patch, or any game-derived executable/data.
+The upstream [LICENSE-ADDITIONS](https://github.com/tangerineturtle1/NX2navi/blob/main/LICENSE-ADDITIONS) reserves rights to its additions and requires written permission for redistribution. That permission has not been obtained. This repository therefore publishes this independently written report and a simple launcher shortcut; it does not distribute the local fork, a source patch, or any game-derived executable/data.
 
 Only the upstream maintainer can decide whether to accept changes into the main project. This report is not affiliated with or endorsed by Nintendo or the NX2navi maintainer.
