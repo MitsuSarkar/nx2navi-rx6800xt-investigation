@@ -4,7 +4,17 @@ Project owner and report publisher: **[MitsuSarkar](https://github.com/MitsuSark
 
 I put together a local experimental build to investigate crashes, visual artifacts, and growing VRAM use on my RX 6800 XT. This repository shares the findings and test results so the upstream maintainer and other users can evaluate them. The investigation and local implementation were developed with Codex assistance.
 
-**This is a technical report, not a downloadable modified game or an approved NX2navi release.** No upstream source code, game executable, game assets, shader binaries, caches, or saves are included. Original NX2navi development belongs to its upstream authors: [tangerineturtle1/NX2navi](https://github.com/tangerineturtle1/NX2navi).
+**This repository contains a technical report and independently written settings helpers, not a downloadable modified game or an approved NX2navi release.** No upstream source code, game executable, game assets, shader binaries, caches, or saves are included. Original NX2navi development belongs to its upstream authors: [tangerineturtle1/NX2navi](https://github.com/tangerineturtle1/NX2navi).
+
+## NX2navi 0.6.1: enemy-death crash and stutter workaround
+
+Published by **MitsuSarkar**, with Codex assistance: [step-by-step guide](AMD-CRASH-AND-STUTTER.md) and [optional PowerShell helper](Apply-AMD-Compatibility.ps1).
+
+On my RX 6800 XT, disabling graphics pipeline libraries with `gpl = 0` stopped the reported enemy-death crashes in subsequent play. Heavy stutters were then traced partly to a false startup-preparation failure marker left by our timed diagnostic test. We restored preparation and completed **5,156 recorded pipelines with zero failures**, retaining the original executable and saves. The guide explains the exact files, backups, manual changes and rollback. Gameplay performance after this recovery is not yet measured; this is not a universal crash fix or VRAM optimization.
+
+Download the helper into any folder and pass your existing game directory; it backs up settings and sets `gpl = 0`. Marker recovery is a separate, opt-in switch for known interrupted preparation. **Do not clear the safeguard after a genuine unexplained preparation crash.** Allow the next startup preparation to finish. New effects can still cause compilation stalls.
+
+The sections below describe the earlier **0.5.0** experimental investigation and are not a list of source patches applied to stock 0.6.1.
 
 ## Tested baseline
 
